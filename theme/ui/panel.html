@@ -1,0 +1,11 @@
+<%
+klass = field.html_class()
+if klass == 'gdt-error':
+    klass = 'alert alert-danger'
+elif klass == 'gdt-success':
+    klass = 'alert alert-success'
+%>
+<div class="gdt-panel <%=klass%>">
+    <h5><%=field.render_title()%></h5>
+    <pre><%=field.render_text()%></pre>
+</div>

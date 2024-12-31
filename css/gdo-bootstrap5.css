@@ -1,0 +1,35 @@
+#gdo-left-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    background: #f8f9fa;
+    z-index: 1040;
+    display: none;
+}
+#gdo-right-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 250px;
+    background: #f8f9fa;
+    z-index: 1040;
+    display: none;
+}
+@media (min-width: 992px) {
+    #gdo-left-bar {
+        display: block;
+    }
+}
+#gdo-pagewrap {
+    margin-left: 250px;
+    margin-right: 0;
+    padding: 8px 24px;
+}
+@media (min-width: 992px) {
+    #gdo-pagewrap {
+        margin-right: 0;
+    }
+}

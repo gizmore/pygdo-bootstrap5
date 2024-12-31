@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="<%=Application.LANG_ISO%>">
+<head>
+    <meta charset="UTF-8">
+    <title><%=field._method.gdo_render_title()%></title>
+    <meta name="description" content="<%=field._method.gdo_render_descr()%>">
+    <meta name="keywords" content="<%=field._method.gdo_render_keywords()%>">
+    <%
+    for url in field._css:
+        writeln(f'    <link rel="stylesheet" href="{url}" />')
+    %>
+</head>
+<body class="no-js">
+
+<nav id="gdo-left-bar" class="gdo-nav-bar">
+    <%=field._left_bar.render()%>
+</nav>
+
+<nav id="gdo-right-bar" class="gdo-nav-bar">
+    <%=field._right_bar.render()%>
+</nav>
+
+<div id="gdo-pagewrap">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button id="toggleLeftSidebar" class="btn btn-outline-secondary me-2">L</button>
+       	    <header id="gdo-header"><%=field._title_bar.render()%></header>
+            <button id="toggleRightSidebar" class="btn btn-outline-secondary">R</button>
+        </div>
+    </nav>
+	<div class="gdo-body">
+		<div class="gdo-main">
+            <div id="gdo-top-bar">
+                <%=field._top_bar.render()%>
+            </div>
+            <%=result%>
+		</div>
+	</div>
+	<footer id="gdo-footer"><%=field._bottom_bar.render()%></footer>
+</div>
+<%
+for url in field._js:
+    writeln(f'<script src="{url}"></script>')
+%>
+</body>
+</html>
