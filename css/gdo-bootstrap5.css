@@ -33,3 +33,8 @@
         margin-right: 0;
     }
 }
+
+
+.gdt-panel pre {
+    margin-bottom: 0;
+}
