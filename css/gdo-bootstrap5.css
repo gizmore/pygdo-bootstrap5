@@ -35,6 +35,6 @@
 }
 
 
-.gdt-panel pre {
+.gdt-panel pre, .gdt-panel p {
     margin-bottom: 0;
 }
