@@ -1,8 +1,10 @@
-<div class="gdt-form-field">
-    <label for="<%=field.get_name()%>" class="form-label"><%=field.render_label(Mode.HTML)%></label>
+<label for="<%=field.get_name()%>" class="form-label"><%=field.render_label(Mode.HTML)%></label>
+<div class="gdt-form-field input-group">
+    <span class="input-group-text"><%=field.render_icon(Mode.HTML)%></span>
     <input id="<%=field.get_name()%>" name="<%=field.get_name()%>" type="<%=field._input_type%>"
            class="form-control<%=' is-invalid' if field.has_error() else '' %>"
            <%=field.html_readonly()%>
+           <%=field.html_placeholder()%>
            <%=field.html_pattern()%>
            <%=field.html_required()%>
            aria-label="<%=field.render_label(Mode.HTML)%>"

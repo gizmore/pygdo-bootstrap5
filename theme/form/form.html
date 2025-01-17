@@ -4,8 +4,10 @@
     <form method="POST" action="<%=field.render_href()%>" enctype="<%=field.render_enctype()%>">
         <%
         for gdt in field.fields():
-                write(gdt.render(Mode.FORM))
+            write(gdt.render(Mode.FORM))
         %>
-        <%=field._actions.render(Mode.FORM)%>
+        <div class="input-group mb-3">
+            <%=field._actions.render(Mode.FORM)%>
+        </div>
     </form>
 </div>

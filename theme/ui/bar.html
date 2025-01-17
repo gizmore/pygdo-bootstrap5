@@ -1,0 +1,8 @@
+<ul id="<%=field._name%>" class="gdt-bar nav <%=field.render_class()%>">
+    <%
+    for gdt in field.get_fields():
+        write('<li class="nav-item">')
+        write(gdt.render(Mode.HTML))
+        writeln("</li>")
+    %>
+</ul>
