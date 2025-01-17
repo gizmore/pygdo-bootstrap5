@@ -1,0 +1,59 @@
+<%
+result = method.gdo_table_result()
+ordered = method.gdo_ordered()
+order_field = method.table_order_field() if ordered else None
+filtered = method.gdo_filtered()
+filter_field = method.table_filter_field() if filtered else None
+searched = method.gdo_searched()
+search_field = method.table_search_field() if searched else None
+%>
+<a name="<%=field._name%>"></a>
+
+<%
+if searched:
+    from gdo.form.GDT_Form import GDT_Form
+    from gdo.form.GDT_Submit import GDT_Submit
+    form = GDT_Form().slim()
+    form.text('info_search')
+    form.add_field(search_field)
+    form.actions().add_field(GDT_Submit())
+    write(form.render_html())
+
+%>
+
+<table id="<%=field._name%>" class="table table-striped table-bordered">
+    <thead>
+    <tr>
+    <%
+    for gdt in method.gdo_table_headers():
+        write('<th scope="col">')
+        write(gdt.render_label())
+        if ordered:
+            write(order_field.display_table_order(gdt))
+        if filtered:
+            write(filter_field.display_table_filter(gdt))
+        write('</th>')
+    %>
+    </tr>
+    </thead>
+    <tbody>
+    <%
+    for gdo in result:
+        write('<tr>')
+        for gdt in method.gdo_table_headers():
+            func = f'render_{gdt.get_name()}'
+            write('<td>')
+            if hasattr(method, func):
+                write(getattr(method, func)(gdt.gdo(gdo), gdo))
+            else:
+                write(gdt.gdo(gdo).render(Mode.CELL))
+            write('</td>')
+        write('</tr>\n')
+    %>
+    </tbody>
+
+    <tfoot>
+
+    </tfoot>
+
+</table>

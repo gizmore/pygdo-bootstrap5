@@ -1,0 +1,14 @@
+<div class="gdt-form-field">
+    <label for="<%=field._name%>" class="form-label"><%=field.render_label(Mode.HTML)%></label>
+    <select id="<%=field._name%>" name="<%=field._name%>" class="form-select<%=' is-invalid' if field.has_error() else '' %>">
+        <%
+        for key, gdt in field.init_choices().items():
+            if not isinstance(gdt, str):
+                gdt = gdt.render_list()
+            writeln(f'<option{field.html_selected(key)} value="{key}">{gdt}</option>')
+        %>
+    </select>
+    <% if field.has_error():
+        writeln(f'<div class="invalid-feedback">%s</div>' % field.render_error())
+    %>
+</div>
