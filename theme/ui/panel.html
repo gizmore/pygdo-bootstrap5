@@ -1,9 +1,11 @@
 <%
 klass = field.html_class()
 if klass == 'gdt-error':
-    klass = 'alert alert-danger'
+    klass = 'gdt-error alert alert-warning'
+if klass == 'gdt-exception':
+    klass = 'gdt-exception alert alert-danger'
 elif klass == 'gdt-success':
-    klass = 'alert alert-success'
+    klass = 'gdt-success alert alert-success'
 %>
 <blockquote class="gdt-panel <%=klass%>">
     <h5><%=field.render_title()%></h5>
