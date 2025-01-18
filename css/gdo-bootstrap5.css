@@ -52,3 +52,11 @@ input[readonly] {
     opacity: 0.7;
     cursor: not-allowed;
 }
+
+.gdt-order a {
+    text-decoration: none;
+}
+
+.gdt-order a.active {
+    color: gold;
+}
