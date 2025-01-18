@@ -1,0 +1,14 @@
+<label for="<%=field.get_name()%>" class="form-label"><%=field.render_label(Mode.HTML)%></label>
+<div class="gdt-form-field input-group mb-3">
+    <span class="input-group-text"><%=field.render_icon(Mode.HTML)%></span>
+    <textarea id="<%=field._name%>" name="<%=field._name%>"
+        class="form-control<%=' is-invalid' if field.has_error() else '' %>"
+        aria-label="<%=field.render_label(Mode.HTML)%>"
+        <%=field.html_required()%>
+        <%=field.html_readonly()%>>
+        <%=field.html_value()%>
+    </textarea>
+    <% if field.has_error():
+        write(f'<div class="invalid-feedback">%s</div>' % field.render_error())
+    %>
+</div>
