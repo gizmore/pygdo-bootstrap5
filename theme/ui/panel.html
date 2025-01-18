@@ -5,8 +5,8 @@ if klass == 'gdt-error':
 elif klass == 'gdt-success':
     klass = 'alert alert-success'
 %>
-<div class="gdt-panel <%=klass%>">
+<blockquote class="gdt-panel <%=klass%>">
     <h5><%=field.render_title()%></h5>
     <p><%=field.render_text()%></p>
     <div><%=field.render_super_fields(Mode.HTML)%></div>
-</div>
+</blockquote>
