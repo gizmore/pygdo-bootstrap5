@@ -11,37 +11,29 @@
     %>
 </head>
 <body class="no-js">
-
-<nav id="gdo-left-bar" class="gdo-nav-bar">
-    <%=field._left_bar.render()%>
-</nav>
-
-<nav id="gdo-right-bar" class="gdo-nav-bar">
-    <%=field._right_bar.render()%>
-</nav>
-
-<div id="gdo-pagewrap">
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <button id="toggleLeftSidebar" class="btn btn-outline-secondary me-2">L</button>
-       	    <header id="gdo-header"><%=field._title_bar.render()%></header>
-            <button id="toggleRightSidebar" class="btn btn-outline-secondary">R</button>
+  <div id="pagewrap">
+    <div class="sidebar" id="leftSidebar">
+        <%=field._left_bar.render()%>
+    </div>
+    <div class="content">
+        <div class="header-bar">
+            <i class="fas fa-donut icon" onclick="GDO.toggleSidebar('leftSidebar')">L</i>
+            <div class="title"><%=field._title_bar.render()%></div>
+            <i class="fas fa-donut icon" onclick="GDO.toggleSidebar('rightSidebar')">R</i>
         </div>
-    </nav>
-	<div class="gdo-body">
-		<div class="gdo-main">
-            <div id="gdo-top-bar">
-                <%=field._top_bar.render()%>
-            </div>
+        <div style="padding: 20px;">
+            <%=field._top_bar.render()%>
             <%=result%>
-		</div>
-	</div>
-	<footer id="gdo-footer"><%=field._bottom_bar.render()%></footer>
-</div>
+        </div>
+    </div>
+    <div class="sidebar collapsed" id="rightSidebar">
+        <%=field._right_bar.render()%>
+    </div>
+  </div>
+  <footer class="footer text-center"><%=field._bottom_bar.render()%></footer>
 <%
 for url in field._js:
-    writeln(f'<script src="{url}"></script>')
+    writeln(f'  <script src="{url}"></script>')
 %>
 </body>
 </html>

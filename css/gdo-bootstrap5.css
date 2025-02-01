@@ -1,37 +1,48 @@
-#gdo-left-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 250px;
-    background: #f8f9fa;
-    z-index: 1040;
-    display: none;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
-#gdo-right-bar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 250px;
-    background: #f8f9fa;
-    z-index: 1040;
-    display: none;
+.sidebar {
+    max-width: 250px;
+    height: 100vh;
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    transition: max-width 0.3s ease;
+    overflow: hidden;
 }
-@media (min-width: 992px) {
-    #gdo-left-bar {
-        display: block;
-    }
+.sidebar.collapsed {
+    width: 0;
+    padding: 0;
 }
-#gdo-pagewrap {
-    margin-left: 250px;
-    margin-right: 0;
-    padding: 8px 24px;
+/* Header bar styles */
+#pagewrap {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
-@media (min-width: 992px) {
-    #gdo-pagewrap {
-        margin-right: 0;
-    }
+.content {
+    flex-grow: 1;
+}
+.header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+.title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.header-bar .icon {
+    cursor: pointer;
+    font-size: 1.5rem;
 }
 
 
