@@ -1,7 +1,7 @@
-<label for="<%=field._name%>" class="form-label"><%=field.render_label(Mode.HTML)%></label>
+    <label for="<%=field._name%>" class="form-label"><%=field.render_label(Mode.HTML)%></label>
 <div class="input-group mb-3">
-    <span class="input-group-text"><%=field.render_icon(Mode.HTML)%></span>
-    <select id="<%=field._name%>" name="<%=field._name%>" class="form-select<%=' is-invalid' if field.has_error() else '' %>">
+       <span class="input-group-text"><%=field.render_icon(Mode.HTML)%></span>
+     <select id="<%=field._name%>" name="<%=field._name%>" class="form-select<%=' is-invalid' if field.has_error() else '' %>">
         <%
         for key, gdt in field.init_choices().items():
             if not isinstance(gdt, str):
@@ -9,10 +9,31 @@
             writeln(f'<option{field.html_selected(key)} value="{key}">{gdt}</option>')
         %>
     </select>
+
     <% if field.has_error():
         writeln(f'<div class="invalid-feedback">%s</div>' % field.render_error())
     %>
 </div>
 <% if field.has_tooltip():
     writeln(f'<div class="form-text">%s</div>' % field.render_tooltip())
+%>
+<%
+if field.has_completion():
+    GDT_Page._js_inline += f"""
+        <script>
+            $(function(){{
+                $('#{field._name}').select2({{
+                    theme: 'bootstrap-5',
+                }});
+            }});
+        </script>"""
+else:
+    GDT_Page._js_inline += f"""
+        <script>
+            $(function(){{
+                $('#{field._name}').select2({{
+                    theme: 'bootstrap-5',
+                }});
+            }});
+        </script>"""
 %>

@@ -18,3 +18,6 @@ class module_bootstrap5(GDO_Module):
         self.add_js('js/gdo-bootstrap5.js')
         self.add_bower_css("bootstrap/dist/css/bootstrap.css")
         self.add_css('css/gdo-bootstrap5.css')
+        self.add_bower_js('select2/dist/js/select2.js')
+        self.add_bower_css('select2/dist/css/select2.css')
+        self.add_bower_css('select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.css')
