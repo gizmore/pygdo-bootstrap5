@@ -9,7 +9,6 @@
             writeln(f'<option{field.html_selected(key)} value="{key}">{gdt}</option>')
         %>
     </select>
-
     <% if field.has_error():
         writeln(f'<div class="invalid-feedback">%s</div>' % field.render_error())
     %>
