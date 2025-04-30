@@ -9,7 +9,7 @@
     for url in field._css:
         writeln(f'    <link rel="stylesheet" href="{url}" />')
     %>
-    <% writeln(GDT_Page._css_inline) %>
+    <%=GDT_Page._css_inline%>
 </head>
 <body class="no-js">
   <div id="pagewrap">
@@ -36,6 +36,6 @@
 for url in field._js:
     writeln(f'  <script src="{url}"></script>')
 %>
-<% writeln(GDT_Page._js_inline) %>
+<%=GDT_Page._js_inline%>
 </body>
 </html>

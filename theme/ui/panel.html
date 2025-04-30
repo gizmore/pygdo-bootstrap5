@@ -1,14 +1,4 @@
-<%
-klass = field.html_class()
-if klass == 'gdt-error':
-    klass = 'gdt-error alert alert-warning'
-if klass == 'gdt-exception':
-    klass = 'gdt-exception alert alert-danger'
-elif klass == 'gdt-success':
-    klass = 'gdt-success alert alert-success'
-%>
-<blockquote class="gdt-panel <%=klass%>">
+<blockquote class="gdt-panel <%=field.html_class()%>">
     <h5><%=field.render_title()%></h5>
     <p><%=field.render_text()%></p>
-    <div><%=field.render_super_fields(Mode.HTML)%></div>
 </blockquote>
