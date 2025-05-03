@@ -1,41 +1,37 @@
 <!DOCTYPE html>
-<html lang="<%=Application.LANG_ISO%>">
+<html lang="{{lang}}">
 <head>
     <meta charset="UTF-8">
-    <title><%=field._method.gdo_render_title()%></title>
-    <meta name="description" content="<%=field._method.gdo_render_descr()%>">
-    <meta name="keywords" content="<%=field._method.gdo_render_keywords()%>">
-    <%
-    for url in field._css:
-        writeln(f'    <link rel="stylesheet" href="{url}" />')
-    %>
-    <%=GDT_Page._css_inline%>
+    <title>{{title}}</title>
+    <meta name="description" content="{{descr}}">
+    <meta name="keywords" content="{{keywords}}">
+    {{css}}
+    {{css_inline}}
 </head>
 <body class="no-js">
   <div id="pagewrap">
     <div class="sidebar" id="leftSidebar">
-        <%=field._left_bar.render()%>
+        {{left_bar}}
     </div>
     <div class="content">
         <div class="header-bar">
             <i class="fas fa-donut icon" onclick="GDO.toggleSidebar('leftSidebar')">L</i>
-            <div class="title"><%=field._title_bar.render()%></div>
+            <div class="title">
+                {{title_bar}}
+            </div>
             <i class="fas fa-donut icon" onclick="GDO.toggleSidebar('rightSidebar')">R</i>
         </div>
         <div style="padding: 20px;">
-            <%=field._top_bar.render()%>
-            <%=result%>
+            {{top_bar}}
+            {{result}}
         </div>
     </div>
     <div class="sidebar collapsed" id="rightSidebar">
-        <%=field._right_bar.render()%>
+        {{right_bar}}
     </div>
   </div>
-  <footer class="footer text-center"><%=field._bottom_bar.render()%></footer>
-<%
-for url in field._js:
-    writeln(f'  <script src="{url}"></script>')
-%>
-<%=GDT_Page._js_inline%>
+  <footer class="footer text-center">{{bottom_bar}}</footer>
+  {{js}}
+  {{js_inline}}
 </body>
 </html>
