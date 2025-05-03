@@ -1,37 +1,37 @@
 <!DOCTYPE html>
-<html lang="{{lang}}">
+<html lang="%(lang)s">
 <head>
     <meta charset="UTF-8">
-    <title>{{title}}</title>
-    <meta name="description" content="{{descr}}">
-    <meta name="keywords" content="{{keywords}}">
-    {{css}}
-    {{css_inline}}
+    <title>%(title)s</title>
+    <meta name="description" content="%(descr)s">
+    <meta name="keywords" content="%(keywords)s">
+    %(css)s
+    %(css_inline)s
 </head>
 <body class="no-js">
   <div id="pagewrap">
     <div class="sidebar" id="leftSidebar">
-        {{left_bar}}
+        %(left_bar)s
     </div>
     <div class="content">
         <div class="header-bar">
             <i class="fas fa-donut icon" onclick="GDO.toggleSidebar('leftSidebar')">L</i>
             <div class="title">
-                {{title_bar}}
+                %(title_bar)s
             </div>
             <i class="fas fa-donut icon" onclick="GDO.toggleSidebar('rightSidebar')">R</i>
         </div>
         <div style="padding: 20px;">
-            {{top_bar}}
-            {{result}}
+            %(top_bar)s
+            %(result)s
         </div>
     </div>
     <div class="sidebar collapsed" id="rightSidebar">
-        {{right_bar}}
+        %(right_bar)s
     </div>
   </div>
-  <footer class="footer text-center">{{bottom_bar}}</footer>
-  {{js}}
-  {{js_inline}}
+  <footer class="footer text-center">%(bottom_bar)s</footer>
+  %(js)s
+  %(js_inline)s
 </body>
 </html>
