@@ -1,4 +1,4 @@
-window.GDO = window.GDO || {}
-window.GDO.toggleSidebar = function(side) {
+window.gdo = window.gdo || {}
+window.gdo.toggleSidebar = function(side) {
     document.getElementById(side).classList.toggle("collapsed");
 };
