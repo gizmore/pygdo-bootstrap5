@@ -1,13 +1,13 @@
-<label for="<%=field.get_name()%>" class="form-label"><%=field.render_label(Mode.html)%></label>
+<label for="<%=field.get_name()%>" class="form-label"><%=field.render_label(Mode.render_html)%></label>
 <div class="gdt-form-field input-group mb-3">
-    <span class="input-group-text"><%=field.render_icon(Mode.html)%></span>
+    <span class="input-group-text"><%=field.render_icon(Mode.render_html)%></span>
     <input id="<%=field.get_name()%>" name="<%=field.get_name()%>" type="<%=field._input_type%>"
            class="form-control<%=' is-invalid' if field.has_error() else '' %>"
            <%=field.html_readonly()%>
            <%=field.html_placeholder()%>
            <%=field.html_pattern()%>
            <%=field.html_required()%>
-           aria-label="<%=field.render_label(Mode.html)%>"
+           aria-label="<%=field.render_label(Mode.render_html)%>"
            value="<%=field.html_value()%>"/>
     <% if field.has_error():
         write(f'<div class="invalid-feedback">%s</div>' % field.render_error())
