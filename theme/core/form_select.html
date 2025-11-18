@@ -1,6 +1,6 @@
-    <label for="<%=field._name%>" class="form-label"><%=field.render_label(Mode.HTML)%></label>
+    <label for="<%=field._name%>" class="form-label"><%=field.render_label(Mode.html)%></label>
 <div class="input-group mb-3">
-       <span class="input-group-text"><%=field.render_icon(Mode.HTML)%></span>
+       <span class="input-group-text"><%=field.render_icon(Mode.html)%></span>
      <select id="<%=field._name%>" name="<%=field._name%>" class="form-select<%=' is-invalid' if field.has_error() else '' %>">
         <%
         for key, gdt in field.init_choices().items():
