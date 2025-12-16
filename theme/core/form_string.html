@@ -1,6 +1,14 @@
-<label for="<%=field.get_name()%>" class="form-label"><%=field.render_label(Mode.render_html)%></label>
+<label for="<%=field.get_name()%>" class="form-label">
+    <%=field.render_label(Mode.render_html)%>
+    <% if field.is_not_null(): %>
+        <span class="text-danger" aria-hidden="true">*</span>
+        <span class="visually-hidden">(required)</span>
+    <% : %>
+</label>
 <div class="gdt-form-field input-group mb-3">
-    <span class="input-group-text"><%=field.render_icon(Mode.render_html)%></span>
+    <span class="input-group-text">
+        <%=field.render_icon(Mode.render_html)%>
+    </span>
     <input id="<%=field.get_name()%>" name="<%=field.get_name()%>" type="<%=field._input_type%>"
            class="form-control<%=' is-invalid' if field.has_error() else '' %>"
            <%=field.html_readonly()%>

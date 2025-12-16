@@ -1,9 +1,17 @@
-    <label for="<%=field._name%>" class="form-label"><%=field.render_label(Mode.render_html)%></label>
+<label for="<%=field._name%>" class="form-label">
+    <%=field.render_label(Mode.render_html)%>
+    <% if field.is_not_null(): %>
+        <span class="text-danger" aria-hidden="true">*</span>
+        <span class="visually-hidden">(required)</span>
+    <% : %>
+</label>
 <div class="input-group mb-3">
        <span class="input-group-text"><%=field.render_icon(Mode.render_html)%></span>
      <select id="<%=field._name%>" name="<%=field._name%>" class="form-select<%=' is-invalid' if field.has_error() else '' %>">
         <%
         for key, gdt in field.init_choices().items():
+            if isinstance(gdt, type):
+                gdt = gdt.render_type_list()
             if isinstance(gdt, GDT):
                 gdt = gdt.render_list()
             writeln(f'<option{field.html_selected(key)} value="{key}">{gdt}</option>')
