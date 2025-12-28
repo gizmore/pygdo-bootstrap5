@@ -39,9 +39,10 @@ if searched:
     </thead>
     <tbody>
     <%
+    headers = method.gdo_table_headers()
     for gdo in result:
         write('<tr>')
-        for gdt in method.gdo_table_headers():
+        for gdt in headers:
             func = f'render_{gdt.get_name()}'
             write('<td>')
             if hasattr(method, func):
