@@ -6,8 +6,11 @@ filtered = method.gdo_filtered()
 filter_field = method.table_filter_field() if filtered else None
 searched = method.gdo_searched()
 search_field = method.table_search_field() if searched else None
+paginated = method.gdo_paginated()
+page_menu = method.get_page_menu()
+page_menu_html = page_menu.render_html()
 %>
-<a name="<%=field._name%>"></a>
+<a id="<%=field._name%>"></a>
 
 <%
 if searched:
@@ -18,11 +21,12 @@ if searched:
     form.add_field(search_field)
     form.actions().add_field(GDT_Submit())
     write(form.render_html())
-
 %>
 
+<%=page_menu_html%>
+
 <form>
-<table id="<%=field._name%>" class="table table-striped table-bordered">
+<table id="<%=field._name%>_table" class="table table-striped table-bordered">
     <thead>
     <tr>
     <%
@@ -61,3 +65,5 @@ if searched:
 </table>
     <input type="submit" style="display: none;">
 </form>
+
+<%=page_menu_html%>
