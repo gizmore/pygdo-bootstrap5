@@ -26,7 +26,7 @@
 %>
 <%
 if field.has_completion():
-    GDT_Page._js_inline += f"""
+    GDT_Page.instance()._js_inline += f"""
         <script>
             $(function(){{
                 $('#{field._name}').select2({{
@@ -35,7 +35,7 @@ if field.has_completion():
             }});
         </script>"""
 else:
-    GDT_Page._js_inline += f"""
+    GDT_Page.instance()._js_inline += f"""
         <script>
             $(function(){{
                 $('#{field._name}').select2({{
