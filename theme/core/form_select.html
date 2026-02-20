@@ -26,21 +26,19 @@
 %>
 <%
 if field.has_completion():
-    GDT_Page.instance()._js_inline += f"""
-        <script>
+    Application.STORAGE.js_inline += f"""
             $(function(){{
                 $('#{field._name}').select2({{
                     theme: 'bootstrap-5',
                 }});
-            }});
-        </script>"""
+            }});>
+"""
 else:
-    GDT_Page.instance()._js_inline += f"""
-        <script>
+    Application.STORAGE.js_inline += f"""
             $(function(){{
                 $('#{field._name}').select2({{
                     theme: 'bootstrap-5',
                 }});
             }});
-        </script>"""
+"""
 %>
