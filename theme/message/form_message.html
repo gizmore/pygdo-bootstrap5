@@ -1,7 +1,7 @@
 <label for="<%=field.get_name()%>" class="form-label"><%=field.render_label(Mode.render_html)%></label>
-<div class="gdt-form-field input-group mb-3">
+<div class="gdt-form-field input-group mb-3 gdt-message">
     <span class="input-group-text"><%=field.render_icon(Mode.render_html)%></span>
-    <textarea id="<%=field._name%>" name="<%=field._name%>"
+    <textarea id="<%=input._name%>" name="<%=input._name%>"
         class="form-control<%=' is-invalid' if field.has_error() else '' %>"
         aria-label="<%=field.render_label(Mode.render_html)%>"
         <%=input.html_required()%>
