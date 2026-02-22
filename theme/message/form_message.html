@@ -4,8 +4,8 @@
     <textarea id="<%=field._name%>" name="<%=field._name%>"
         class="form-control<%=' is-invalid' if field.has_error() else '' %>"
         aria-label="<%=field.render_label(Mode.render_html)%>"
-        <%=field.html_required()%>
-        <%=field.html_readonly()%>><%=field.html_value()%></textarea>
+        <%=input.html_required()%>
+        <%=input.html_readonly()%>><%=input.html_value()%></textarea>
     <% if field.has_error():
         write(f'<div class="invalid-feedback">%s</div>' % field.render_error())
     %>
