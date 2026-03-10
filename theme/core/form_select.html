@@ -7,7 +7,11 @@
 </label>
 <div class="input-group mb-3">
        <span class="input-group-text"><%=field.render_icon(Mode.render_html)%></span>
-     <select id="<%=field._name%>" name="<%=field._name%>" class="form-select<%=' is-invalid' if field.has_error() else '' %>">
+     <select id="<%=field._name%>" name="<%=field._name%>" class="form-select<%=' is-invalid' if field.has_error() else '' %>"
+         <% if hasattr(field, '_completion_href'): %>
+             <%= field.html_autocomplete() %>
+         <% : %>
+     >
         <%
         for key, gdt in field.init_choices().items():
             if isinstance(gdt, type):
@@ -25,7 +29,7 @@
     writeln(f'<div class="form-text">%s</div>' % field.render_tooltip())
 %>
 <%
-if field.has_completion():
+if hasattr(field, '_completion_href'):
     Application.STORAGE.js_inline += f"""
             $(function(){{
                 $('#{field._name}').select2({{

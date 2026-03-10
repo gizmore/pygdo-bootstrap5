@@ -11,6 +11,9 @@
     </span>
     <input id="<%=field.get_name()%>" name="<%=field.get_name()%>" type="<%=field._input_type%>"
            class="form-control<%=' is-invalid' if field.has_error() else '' %>"
+           <% if hasattr(field, '_completion_href'): %>
+               <%= field.html_autocomplete() %>
+           <% : %A
            <%=field.html_readonly()%>
            <%=field.html_placeholder()%>
            <%=field.html_pattern()%>
