@@ -56,6 +56,20 @@ body {
 #pagewrap:has(#rightSidebar:not(.collapsed)) {
     padding-right: 250px;
 }
+
+.footer {
+    margin-left: 250px;
+    margin-right: 0;
+}
+
+body:has(#leftSidebar.collapsed) .footer {
+    margin-left: 0;
+}
+
+body:has(#rightSidebar:not(.collapsed)) .footer {
+    margin-right: 250px;
+}
+
 .content {
     flex-grow: 1;
     min-width: 0;
