@@ -206,3 +206,7 @@ input[readonly] {
 .gdt-menu {
     display: flex;
 }
+
+ul {
+    padding: 0;
+}
