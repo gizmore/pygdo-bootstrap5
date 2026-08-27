@@ -48,7 +48,7 @@ $(function() {
         let url = self.attr('gdo-completion');
         let data1 = JSON.parse(self.attr('gdo-completion-data'));
         let data2 = JSON.parse(self.attr('gdo-completion-data2'));
-        const initial = self.val();
+        const initial = JSON.parse(self.attr('gdo-completion-initial') || 'null');
         self.on('select2:open', function (e) {
             setTimeout(function () {
                 $('.select2-search__field').val(self.val());
@@ -102,8 +102,10 @@ $(function() {
                 };
             }
         });
-        setTimeout(function() {
-           self.val(initial).trigger('change');
-        }, 1);
+        if (initial) {
+            self.append(new Option(initial.display_var, initial.id, true, true));
+            self.trigger('change');
+            self.val(initial.var);
+        }
     });
 });
