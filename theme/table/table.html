@@ -16,7 +16,7 @@ page_menu_html = page_menu.render_html()
 if searched:
     from gdo.form.GDT_Form import GDT_Form
     from gdo.form.GDT_Submit import GDT_Submit
-    form = GDT_Form().slim()
+    form = GDT_Form().slim().get()
     form.text('info_search')
     form.add_field(search_field)
     form.actions().add_field(GDT_Submit())
