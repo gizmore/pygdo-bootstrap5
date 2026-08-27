@@ -3,18 +3,20 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
 }
 .sidebar {
     box-sizing: border-box;
     width: 250px;
     max-width: 250px;
     flex: 0 0 250px;
-    height: 100vh;
+    min-height: 0;
     background-color: #222;
     color: white;
     padding: 20px;
     transition: max-width 0.3s ease;
-    overflow: hidden;
+    overflow-y: scroll;
 }
 .sidebar.collapsed {
     width: 0;
@@ -28,11 +30,22 @@ body {
     flex-direction: row;
     width: 100%;
     min-width: 0;
+    min-height: 0;
 }
 .content {
     flex-grow: 1;
     min-width: 0;
-    overflow: scroll;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.content-body {
+    flex-grow: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 20px;
 }
 
 .gdt-table-scroll {
