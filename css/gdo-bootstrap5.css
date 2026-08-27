@@ -139,6 +139,40 @@ input[readonly] {
     display: none;
 }
 
+/* Select2 replaces the input, so keep completion fields inside Bootstrap's
+ * input-group geometry instead of rendering them as a separate control. */
+.gdt-form-field > .select2-container--bootstrap-5 {
+    flex: 1 1 auto;
+    width: 1% !important;
+}
+
+.gdt-form-field > .input-group-text + .select2-container--bootstrap-5 .select2-selection {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.gdt-form-field > .select2-container--bootstrap-5 + .gdt-input-clear:not([hidden]) {
+    margin-left: -1px;
+}
+
+.gdt-form-field > .select2-container--bootstrap-5:has(+ .gdt-input-clear:not([hidden])) .select2-selection {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.gdt-completion-result {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gdt-completion-avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .gdt-global-search .gdt-form {
     margin: 0;
     padding: 0;

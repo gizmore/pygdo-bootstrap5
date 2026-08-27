@@ -37,6 +37,14 @@ $(function() {
     console.log('Initiating autocompletes.');
     $('input[gdo-completion]').each(function() {
         const self = $(this);
+        const completionDisplay = function(item) {
+            if (!item.id || !item.avatar) {
+                return item.text;
+            }
+            return $('<span class="gdt-completion-result"></span>')
+                .append($('<img class="gdt-completion-avatar" alt="">').attr('src', item.avatar))
+                .append($('<span></span>').text(item.text));
+        };
         let url = self.attr('gdo-completion');
         let data1 = JSON.parse(self.attr('gdo-completion-data'));
         let data2 = JSON.parse(self.attr('gdo-completion-data2'));
@@ -54,10 +62,12 @@ $(function() {
                     $(t).empty().val(null); //.trigger('change');
                 }
                 $(t).append(new Option(data.text, data.id, true, true));
-                self.val(data.text);
+                self.val(data.var);
               }, 0);
          });
          self.select2({
+            theme: 'bootstrap-5',
+            width: '100%',
             placeholder: self.attr('placeholder'),
             tags: data1.allow_new,
             multiple: !!self.attr('multiple'),
@@ -72,9 +82,13 @@ $(function() {
                 processResults: data => ({
                   results: data.data.map(item => ({
                     id: item.id,
-                    text: item.val,
+                    var: item.var,
+                    avatar: item.avatar,
+                    text: item.display_var,
                   }))
-                })
+                }),
+                templateResult: completionDisplay,
+                templateSelection: completionDisplay,
             },
             createTag: function (params) {
                 const term = $.trim(params.term);
