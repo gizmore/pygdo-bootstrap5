@@ -3,6 +3,10 @@ window.gdo.toggleSidebar = function(side) {
     document.getElementById(side).classList.toggle("collapsed");
 };
 
+if (window.matchMedia('(max-width: 767.98px)').matches) {
+    document.getElementById('leftSidebar')?.classList.add('collapsed');
+}
+
 $(function() {
     console.log('Initiating autocompletes.');
     $('input[gdo-completion]').each(function() {
