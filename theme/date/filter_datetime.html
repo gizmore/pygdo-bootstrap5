@@ -1,6 +1,16 @@
+<%
+filter_id = f'{field._name}_{gdt._name}_datetime_filter'
+filter_open = bool(field.filter_values(gdt))
+%>
 <div class="gdt-filter gdt-filter-datetime">
-    <input class="form-control" type="date" name="<%=field._name%>[<%=gdt._name%>][date_from]" value="<%=field.filter_date_value(gdt, 'date_from')%>"<%='' if gdt.filter_has_date() else ' disabled'%>>
-    <input class="form-control" type="time" step="1" name="<%=field._name%>[<%=gdt._name%>][time_from]" value="<%=field.filter_date_value(gdt, 'time_from')%>"<%='' if gdt.filter_has_time() else ' disabled'%>>
-    <input class="form-control" type="date" name="<%=field._name%>[<%=gdt._name%>][date_to]" value="<%=field.filter_date_value(gdt, 'date_to')%>"<%='' if gdt.filter_has_date() else ' disabled'%>>
-    <input class="form-control" type="time" step="1" name="<%=field._name%>[<%=gdt._name%>][time_to]" value="<%=field.filter_date_value(gdt, 'time_to')%>"<%='' if gdt.filter_has_time() else ' disabled'%>>
+    <button class="btn btn-sm btn-outline-secondary gdt-datetime-filter-toggle<%='' if filter_open else ' collapsed'%>" type="button"
+            data-bs-toggle="collapse" data-bs-target="#<%=filter_id%>" aria-expanded="<%='true' if filter_open else 'false'%>" aria-controls="<%=filter_id%>">
+        <i class="fa fa-calendar" aria-hidden="true"></i><span class="visually-hidden"><%=gdt.render_label()%></span>
+    </button>
+    <div id="<%=filter_id%>" class="collapse<%=' show' if filter_open else ''%>">
+        <input class="form-control" type="date" name="<%=field._name%>[<%=gdt._name%>][date_from]" value="<%=field.filter_date_value(gdt, 'date_from')%>"<%='' if gdt.filter_has_date() else ' disabled'%>>
+        <input class="form-control" type="time" step="1" name="<%=field._name%>[<%=gdt._name%>][time_from]" value="<%=field.filter_date_value(gdt, 'time_from')%>"<%='' if gdt.filter_has_time() else ' disabled'%>>
+        <input class="form-control" type="date" name="<%=field._name%>[<%=gdt._name%>][date_to]" value="<%=field.filter_date_value(gdt, 'date_to')%>"<%='' if gdt.filter_has_date() else ' disabled'%>>
+        <input class="form-control" type="time" step="1" name="<%=field._name%>[<%=gdt._name%>][time_to]" value="<%=field.filter_date_value(gdt, 'time_to')%>"<%='' if gdt.filter_has_time() else ' disabled'%>>
+    </div>
 </div>
