@@ -160,6 +160,10 @@ input[readonly] {
     border-bottom-right-radius: 0;
 }
 
+.gdt-form > form > a {
+    display: block;
+}
+
 .gdt-completion-result {
     display: inline-flex;
     align-items: center;
