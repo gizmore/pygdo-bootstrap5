@@ -16,18 +16,33 @@ page_menu_html = page_menu.render_html()
 if searched:
     from gdo.form.GDT_Form import GDT_Form
     from gdo.form.GDT_Submit import GDT_Submit
+    search_id = f'{field._name}_search'
+    search_open = bool(search_field.get_val())
     form = GDT_Form().slim().get()
     form.text('info_search')
     form.add_field(search_field)
     form.actions().add_field(GDT_Submit())
-    write(form.render_html())
+    write(f'''<div class="accordion gdt-global-search mb-3" id="{search_id}">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="{search_id}_heading">
+            <button class="accordion-button{' collapsed' if not search_open else ''}" type="button" data-bs-toggle="collapse" data-bs-target="#{search_id}_body" aria-expanded="{'true' if search_open else 'false'}" aria-controls="{search_id}_body">
+                {search_field.render_label()}
+            </button>
+        </h2>
+        <div id="{search_id}_body" class="accordion-collapse collapse{' show' if search_open else ''}" aria-labelledby="{search_id}_heading" data-bs-parent="#{search_id}">
+            <div class="accordion-body">{form.render_html()}</div>
+        </div>
+    </div>
+</div>''')
 %>
 
 <%=page_menu_html%>
 
-<div class="gdt-table-reset mb-3">
-    <a class="btn btn-secondary" href="<%=method.table_reset_href()%>"><%=t('btn_clear_table_filters')%></a>
-</div>
+<% if filtered or searched: %>
+    <div class="gdt-table-reset mb-3">
+        <a class="btn btn-secondary" href="<%=method.table_reset_href()%>"><%=t('btn_clear_table_filters')%></a>
+    </div>
+<% : %>
 
 <div class="gdt-table-scroll">
 <form>
