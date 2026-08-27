@@ -190,6 +190,15 @@ input[readonly] {
     white-space: nowrap;
 }
 
+.table th {
+    white-space: nowrap;
+}
+
+.gdt-filter-datetime > button {
+    width: 38px;
+    height: 38px;
+}
+
 .gdt-order a {
     text-decoration: none;
 }
