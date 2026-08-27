@@ -5,7 +5,10 @@ body {
     flex-direction: column;
 }
 .sidebar {
+    box-sizing: border-box;
+    width: 250px;
     max-width: 250px;
+    flex: 0 0 250px;
     height: 100vh;
     background-color: #222;
     color: white;
@@ -15,6 +18,7 @@ body {
 }
 .sidebar.collapsed {
     width: 0;
+    flex-basis: 0;
     padding: 0;
 }
 /* Header bar styles */
@@ -28,6 +32,7 @@ body {
 .content {
     flex-grow: 1;
     min-width: 0;
+    overflow: scroll;
 }
 
 .gdt-table-scroll {
