@@ -1,0 +1,22 @@
+<label for="<%=field.get_name()%>" class="form-label">
+    <%=field.render_label(Mode.render_html)%>
+    <% if field.is_not_null(): %>
+        <span class="text-danger" aria-hidden="true">*</span>
+        <span class="visually-hidden">(required)</span>
+    <% : %>
+</label>
+<div class="gdt-form-field input-group mb-3">
+    <span class="input-group-text">
+        <%=field.render_icon(Mode.render_html)%>
+    </span>
+    <textarea id="<%=field.get_name()%>" name="<%=field.get_name()%>"
+              class="form-control gdt-clearable-input<%=' is-invalid' if field.has_error() else '' %>"
+              <%=field.html_readonly()%>
+              <%=field.html_placeholder()%>
+              <%=field.html_required()%>
+              aria-label="<%=field.render_label(Mode.render_html)%>"><%=field.html_value()%></textarea>
+    <button type="button" class="btn btn-outline-secondary gdt-input-clear" aria-label="Clear field" title="Clear field" tabindex="-1" hidden>&times;</button>
+    <% if field.has_error():
+        write(f'<div class="invalid-feedback">%s</div>' % field.render_error())
+    %>
+</div>
