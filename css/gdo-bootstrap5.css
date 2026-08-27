@@ -202,3 +202,7 @@ input[readonly] {
     font-weight: bold;
     border-bottom: 2px ridge silver;
 }
+
+.gdt-menu {
+    display: flex;
+}
