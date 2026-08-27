@@ -1,3 +1,4 @@
-<div class="gdt-filter">
-    <input type="<%=gdt.filter_type()%>" name="<%=field._name%>[<%=gdt._name%>]" value="<%=field.filter_value(gdt)%>">
+<div class="gdt-filter input-group">
+    <input class="form-control gdt-clearable-input" type="<%=gdt.filter_type()%>" name="<%=field._name%>[<%=gdt._name%>]" value="<%=field.filter_value(gdt)%>">
+    <button type="button" class="btn btn-outline-secondary gdt-input-clear" aria-label="Clear field" title="Clear field" tabindex="-1" hidden>&times;</button>
 </div>

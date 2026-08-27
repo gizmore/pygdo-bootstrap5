@@ -76,6 +76,16 @@ input[readonly] {
     cursor: not-allowed;
 }
 
+.gdt-input-clear {
+    min-width: 2.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.gdt-input-clear[hidden] {
+    display: none;
+}
+
 .gdt-order a {
     text-decoration: none;
 }

@@ -10,7 +10,7 @@
         <%=field.render_icon(Mode.render_html)%>
     </span>
     <input id="<%=field.get_name()%>" name="<%=field.get_name()%>" type="<%=field._input_type%>"
-           class="form-control<%=' is-invalid' if field.has_error() else '' %>"
+           class="form-control gdt-clearable-input<%=' is-invalid' if field.has_error() else '' %>"
            <%=field.html_completion()%>
            <%=field.html_readonly()%>
            <%=field.html_placeholder()%>
@@ -18,6 +18,7 @@
            <%=field.html_required()%>
            aria-label="<%=field.render_label(Mode.render_html)%>"
            value="<%=field.html_value()%>">
+    <button type="button" class="btn btn-outline-secondary gdt-input-clear" aria-label="Clear field" title="Clear field" tabindex="-1" hidden>&times;</button>
     <% if field.has_error():
         write(f'<div class="invalid-feedback">%s</div>' % field.render_error())
     %>

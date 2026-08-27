@@ -8,6 +8,32 @@ if (window.matchMedia('(max-width: 767.98px)').matches) {
 }
 
 $(function() {
+    const updateClearButton = function(input) {
+        const button = input.parentElement?.querySelector('.gdt-input-clear');
+        if (!button) {
+            return;
+        }
+        button.hidden = input.value === '' || input.readOnly || input.disabled;
+    };
+
+    $('.gdt-clearable-input').each(function() {
+        updateClearButton(this);
+    }).on('input change', function() {
+        updateClearButton(this);
+    });
+
+    $('.gdt-input-clear').on('click', function() {
+        const input = this.parentElement?.querySelector('.gdt-clearable-input');
+        if (!input || input.readOnly || input.disabled) {
+            return;
+        }
+        input.value = '';
+        input.dispatchEvent(new Event('input', {bubbles: true}));
+        input.dispatchEvent(new Event('change', {bubbles: true}));
+        updateClearButton(input);
+        input.focus();
+    });
+
     console.log('Initiating autocompletes.');
     $('input[gdo-completion]').each(function() {
         const self = $(this);
