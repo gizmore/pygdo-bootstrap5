@@ -192,3 +192,9 @@ input[readonly] {
 .gdt-order a.active {
     color: gold;
 }
+
+.gdt-divider.gdt-row {
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 2px ridge silver;
+}
