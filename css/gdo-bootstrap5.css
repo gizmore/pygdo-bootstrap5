@@ -23,9 +23,16 @@ body {
     display: flex;
     flex-direction: row;
     width: 100%;
+    min-width: 0;
 }
 .content {
     flex-grow: 1;
+    min-width: 0;
+}
+
+.gdt-table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
 }
 .header-bar {
     display: flex;

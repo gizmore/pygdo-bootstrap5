@@ -29,6 +29,7 @@ if searched:
     <a class="btn btn-secondary" href="<%=method.table_reset_href()%>"><%=t('btn_clear_table_filters')%></a>
 </div>
 
+<div class="gdt-table-scroll">
 <form>
 <table id="<%=field._name%>_table" class="table table-striped table-bordered">
     <thead>
@@ -69,5 +70,6 @@ if searched:
 </table>
     <input type="submit" style="display: none;">
 </form>
+</div>
 
 <%=page_menu_html%>
