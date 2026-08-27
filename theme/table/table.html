@@ -25,6 +25,10 @@ if searched:
 
 <%=page_menu_html%>
 
+<div class="gdt-table-reset mb-3">
+    <a class="btn btn-secondary" href="<%=method.table_reset_href()%>"><%=t('btn_clear_table_filters')%></a>
+</div>
+
 <form>
 <table id="<%=field._name%>_table" class="table table-striped table-bordered">
     <thead>
