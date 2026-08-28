@@ -213,6 +213,12 @@ input[readonly] {
     border-bottom: 2px ridge silver;
 }
 
+.gdt-divider.gdt-col {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+}
+
 .gdt-menu {
     display: flex;
 }
