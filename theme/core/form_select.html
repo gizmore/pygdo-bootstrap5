@@ -7,7 +7,7 @@
 </label>
 <div class="input-group mb-3">
        <span class="input-group-text"><%=field.render_icon(Mode.render_html)%></span>
-     <select id="<%=field._name%>" name="<%=field._name%>" class="form-select<%=' is-invalid' if field.has_error() else '' %>"
+     <select id="<%=field._name%>" name="<%=field._name%>" class="form-select<%=' is-invalid' if field.has_error() else '' %>"<%=field.html_disabled()%>
          <% if hasattr(field, '_completion_href'): %>
              <%= field.html_autocomplete() %>
          <% : %>
