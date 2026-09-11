@@ -207,6 +207,15 @@ input[readonly] {
     color: gold;
 }
 
+a.gdt-link-disabled,
+.gdt-link-disabled {
+    color: var(--bs-secondary-color, #6c757d);
+    opacity: 0.55;
+    cursor: not-allowed;
+    pointer-events: none;
+    text-decoration: none;
+}
+
 .gdt-divider.gdt-row {
     font-size: 24px;
     font-weight: bold;
