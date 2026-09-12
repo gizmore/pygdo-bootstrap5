@@ -1,4 +1,25 @@
 window.gdo = window.gdo || {}
+window.gdo.bootstrap5 = window.gdo.bootstrap5 || {}
+window.gdo.bootstrap5.selectOptions = function(select) {
+    const options = {theme: 'bootstrap-5'};
+    if (!select.is('[data-gdt-icon-select]')) {
+        return options;
+    }
+    const iconChoice = function(item) {
+        const option = item.element;
+        const icon = option?.dataset.iconHtml;
+        if (!icon) {
+            return item.text;
+        }
+        return $('<span class="gdt-icon-select-choice"></span>')
+            .append($(icon))
+            .append(document.createTextNode(` ${option.dataset.iconLabel || item.text}`));
+    };
+    options.templateResult = iconChoice;
+    options.templateSelection = iconChoice;
+    return options;
+};
+
 window.gdo.toggleSidebar = function(side) {
     document.getElementById(side).classList.toggle("collapsed");
 };

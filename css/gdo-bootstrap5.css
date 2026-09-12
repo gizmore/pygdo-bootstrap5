@@ -6,6 +6,12 @@ body {
     min-height: 100vh;
     overflow-y: auto;
 }
+
+.gdt-icon-select-choice {
+    align-items: center;
+    display: inline-flex;
+    gap: .4rem;
+}
 .sidebar {
     box-sizing: border-box;
     width: 250px;

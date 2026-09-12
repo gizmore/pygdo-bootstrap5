@@ -7,18 +7,19 @@
 </label>
 <div class="input-group mb-3">
        <span class="input-group-text"><%=field.render_icon(Mode.render_html)%></span>
-     <select id="<%=field._name%>" name="<%=field._name%>" class="form-select<%=' is-invalid' if field.has_error() else '' %>"<%=field.html_disabled()%>
+     <select id="<%=field._name%>" name="<%=field._name%>" class="form-select<%=' is-invalid' if field.has_error() else '' %>"<%=field.html_disabled()%><%=field.html_attrs()%>
          <% if hasattr(field, '_completion_href'): %>
              <%= field.html_autocomplete() %>
          <% : %>
      >
         <%
-        for key, gdt in field.init_choices().items():
-            if isinstance(gdt, type):
-                gdt = gdt.render_type_list()
-            if isinstance(gdt, GDT):
-                gdt = gdt.render_list()
-            writeln(f'<option{field.html_selected(key)} value="{key}">{gdt}</option>')
+        for key, choice in field.init_choices().items():
+            attrs = field.html_option_attrs(key, choice)
+            if isinstance(choice, type):
+                choice = choice.render_type_list()
+            if isinstance(choice, GDT):
+                choice = choice.render_list()
+            writeln(f'<option{field.html_selected(key)} value="{key}"{attrs}>{choice}</option>')
         %>
     </select>
     <% if field.has_error():
@@ -32,17 +33,15 @@
 if hasattr(field, '_completion_href'):
     Application.STORAGE.js_inline += f"""
             $(function(){{
-                $('#{field._name}').select2({{
-                    theme: 'bootstrap-5',
-                }});
+                const select = $('#{field._name}');
+                select.select2(gdo.bootstrap5.selectOptions(select));
             }});>
 """
 else:
     Application.STORAGE.js_inline += f"""
             $(function(){{
-                $('#{field._name}').select2({{
-                    theme: 'bootstrap-5',
-                }});
+                const select = $('#{field._name}');
+                select.select2(gdo.bootstrap5.selectOptions(select));
             }});
 """
 %>
