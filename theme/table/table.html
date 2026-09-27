@@ -1,5 +1,6 @@
 <%
 result = method.get_table_result()
+field.add_class('table').add_class('table-striped').add_class('table-bordered')
 ordered = method.gdo_ordered()
 order_field = method.table_order_field() if ordered else None
 filtered = method.gdo_filtered()
@@ -48,7 +49,7 @@ if searched:
 
 <div class="gdt-table-scroll">
 <form>
-<table id="<%=field._name%>_table" class="table table-striped table-bordered">
+<table id="<%=field._name%>_table"<%=field.html_attrs()%>>
 <% if method.gdo_render_table_headers(): %>
     <thead>
     <tr>
