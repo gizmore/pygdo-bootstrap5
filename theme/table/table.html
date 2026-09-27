@@ -58,9 +58,11 @@ if searched:
         if cell_class := gdt.html_cell_class():
             write(f' class="{cell_class}"')
         write('>')
+        if ordered:
+            write(order_field.display_table_order_link(gdt, 'ASC'))
         write(gdt.render_label())
         if ordered:
-            write(order_field.display_table_order(gdt))
+            write(order_field.display_table_order_link(gdt, 'DESC'))
         if filtered and gdt.is_filterable():
             write(filter_field.display_table_filter(gdt))
         write('</th>')
