@@ -7,8 +7,8 @@ filter_field = method.table_filter_field() if filtered else None
 searched = method.gdo_searched()
 search_field = method.table_search_field() if searched else None
 paginated = method.gdo_paginated()
-page_menu = method.get_page_menu()
-page_menu_html = page_menu.render_html()
+render_pagination = method.gdo_render_pagination()
+page_menu_html = method.get_page_menu().render_html() if render_pagination else ''
 %>
 <a id="<%=field._name%>"></a>
 
@@ -36,7 +36,9 @@ if searched:
 </div>''')
 %>
 
+<% if method.gdo_render_pagination_top(): %>
 <%=page_menu_html%>
+<% : %>
 
 <% if filtered or searched: %>
     <div class="gdt-table-reset mb-3">
@@ -47,6 +49,7 @@ if searched:
 <div class="gdt-table-scroll">
 <form>
 <table id="<%=field._name%>_table" class="table table-striped table-bordered">
+<% if method.gdo_render_table_headers(): %>
     <thead>
     <tr>
     <%
@@ -61,6 +64,7 @@ if searched:
     %>
     </tr>
     </thead>
+<% : %>
     <tbody>
     <%
     headers = method.gdo_table_headers()
@@ -87,4 +91,6 @@ if searched:
 </form>
 </div>
 
+<% if method.gdo_render_pagination_bottom(): %>
 <%=page_menu_html%>
+<% : %>
