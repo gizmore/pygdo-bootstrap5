@@ -41,7 +41,7 @@ if searched:
 <%=page_menu_html%>
 <% : %>
 
-<% if filtered or searched: %>
+<% if searched: %>
     <div class="gdt-table-reset mb-3">
         <a class="btn btn-secondary" href="<%=method.table_reset_href()%>"><%=t('btn_clear_table_filters')%></a>
     </div>
